@@ -5,7 +5,7 @@
 **Діаграма** **UML:**
 ![](images/Main.png)
 **Код** **Animal:**
-```
+````java
 package domain;
 public class Animal {
     
@@ -35,9 +35,9 @@ public class Animal {
         return "Animal:" + "\nname:\t" + name + "\nweight:\t" + weight + " kg";
     }
 }
-```
+````
 **Код** **Fox:**
-```
+````java
 package domain;
 public class Fox extends Predator {
 
@@ -99,9 +99,9 @@ public class Fox extends Predator {
        System.out.println("Fox eats meat...");
     }
 }
-```
+````
 **Код** **Predator:**
-```
+````java
 package domain;
 
 public class Predator extends Animal {
@@ -110,10 +110,10 @@ public class Predator extends Animal {
         System.out.println("Predator is huntring...");
     }
 }
-```
+````
 
 **Код** **TestAnimal:**
-```
+````java
 package test;
 
 import domain.Fox;
@@ -133,6 +133,6 @@ public class TestAnimal {
         fox.walk();
     }
 }
-```
+````
 # Результат роботи:
 ![](images/RES.png)
