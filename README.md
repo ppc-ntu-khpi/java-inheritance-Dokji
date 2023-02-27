@@ -1,28 +1,138 @@
 [![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-f4981d0f882b2a3f0472912d15f9806d57e124e0fc890972558857b51b24a6f9.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=10176987)
 # Практична робота "Реалізація успадкування"
-Цей репозиторій містить приклад виконання та інструкції для виконання практичної роботи з наслідування в JAVA. 
+## Обрав лисицю для цієї практичної, 
+(Спочатку робив мeдоїда, потім зрозумів що він черезчур багато що може витворяти, тому взяв попроще)
+**Діаграма** **UML:**
+![](images/Main.png)
+**Код** **Animal:**
+````java
+package domain;
+public class Animal {
+    
+    protected String name;
 
-Для прикладу я змоделював **звичайнісінького кота**😉
+    protected int weight;
 
-<img src="https://github.com/ppc-ntu-khpi/Inheritance-Starter/blob/master/images/cat.jpg" width="100%"/>
-<img src="https://github.com/ppc-ntu-khpi/Inheritance-Starter/blob/master/images/Cat-Diagram.png" width="100%"/>
+    public Animal() {
+        name="Generic animal";
+        weight=16;
+    }
+    public void eat() {
+        System.out.println("Animal eating...");
+    }
+    public void drink() {
+        System.out.println("Animal drinking...");
+    }
+    public void sleep() {
+     System.out.println("Animal sleeping...");   
+    }
+    public void speak() {
+        System.out.println("Animal speaking...");
+    }
 
-## В рамках практичної роботи ви маєте зробити наступне:
-1. подумайте, які риси та поведінка притаманні всім без винятку тваринам 
-2. оберіть будь-яку тварину (не стримуйте свою фантазію😉)
-2. з допомогою **easyUML** для Netbeans або **StarUML** створіть діаграму класів для обраної тварини. Ви маєте отримати шось подібне до прикладу з цього репозиторію.
-3. згенеруйте каркасний код на основі діаграми
-4. допрацюйте код - *всі методи мають виводити на екран повідомлення про те, що робить тварина!*
-5. створіть тестовий клас, в методі **main** якого створіть об'єкт класу тварини та викличіть його методи
-3. завантажте ваш код до до теки **src** вашого репозиторію (замінивши код прикладу). Експортовану (в PNG) діаграму завантажте в теку **images** та додайте в **Readme** (не забудьте в ньому описати що за тварину ви обрали)
-4. здайте завдання. **УВАГА! Не забудьте, здаючи завдання через Google Classroom, вказати посилання на Ваш репозиторій!**
+    @Override
+    public String toString() {
+        return "Animal:" + "\nname:\t" + name + "\nweight:\t" + weight + " kg";
+    }
+}
+````
+**Код** **Fox:**
+````java
+package domain;
+public class Fox extends Predator {
 
-## Відеодемонстрація виконання практичної
+    private String kind;
+    
+    public Fox(String name,int weight,String kind) {
+        this.name=name;
+        this.weight=weight;
+        this.kind=kind;
+    }
 
-<p align="center">
-<a href="https://www.youtube.com/watch?v=SFSC1omkE8Q&feature=youtu.be" target="_blank"><img src="https://img.youtube.com/vi/SFSC1omkE8Q/0.jpg"/></a>
-</p>
+    public Fox() {
+        this("Jeki",15,"GreyFox");
+    }
 
-Не забувайте, що ви можете обговорювати завдання в девелоперському мессенджері **Gitter** - у відповідній [чат-кімнаті](https://gitter.im/PPC-SE-2020/OOP?utm_source=share-link&utm_medium=link&utm_campaign=share-link).
+    public Fox(String name) {
+        this(name,15,"GreyFox");
+    }
+    
+    public void play() {
+        System.out.println("Fox is playing...");
+    }
+    public void mark() {
+        System.out.println("Fox is marking...");
+      
+    }
+    
+    public void walk() {
+        System.out.println("Fox is walking...");
+    }
 
-[![Gitter](https://badges.gitter.im/PPC-SE-2020/OOP.svg)](https://gitter.im/PPC-SE-2020/OOP?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+    @Override
+    public void hunt() {
+        System.out.println("Fox hunting for a rabbit"); 
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()+"\nKind:\t"+this.kind+"\n\nThis is Fox!!!"; 
+    }
+
+    @Override
+    public void speak() {
+        System.out.println("Fox speaking: Ehehehehehe-ehehehehe-uahahahahaha... :D"); 
+    }
+
+    @Override
+    public void sleep() {
+        System.out.println("Fox sleeping...");
+    }
+
+    @Override
+    public void drink() {
+        System.out.println("Fox drinking water...");
+    }
+
+    @Override
+    public void eat() {
+       System.out.println("Fox eats meat...");
+    }
+}
+````
+**Код** **Predator:**
+````java
+package domain;
+
+public class Predator extends Animal {
+
+    public void hunt() {
+        System.out.println("Predator is huntring...");
+    }
+}
+````
+
+**Код** **TestAnimal:**
+````java
+package test;
+
+import domain.Fox;
+
+public class TestAnimal {
+    
+    public static void main(String[] args) {
+        Fox fox= new Fox("Kalista");
+        System.out.println(fox);
+        fox.hunt();
+        fox.eat();
+        fox.drink();
+        fox.speak();
+        fox.mark();
+        fox.sleep();
+        fox.play();
+        fox.walk();
+    }
+}
+````
+# Результат роботи:
+![](images/RES.png)
